@@ -54,6 +54,9 @@ Yolov5를 기반으로 제작한 식물 분류 인공지능<br>
   - Valid : 1360(20%)
 
 
+
+Data set Download : https://drive.google.com/file/d/18gkiKTJwl_FO99dnqbxyCCDyFQdo6hpY/view?usp=sharing
+
 # 모델 트레이닝
 
 1. yolov5 설치
