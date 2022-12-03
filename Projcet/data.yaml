@@ -1,0 +1,10 @@
+train: ../train/images
+val: ../valid/val
+
+# Classes
+nc: 17  # number of classes
+names: ['Golden_pothos','Muehlenbeckia_complexa', 'Happy_plant', 'Bunnyearscactus', 'Rosmarinus', 'Dracaena', 'Chlorophytum',
+        'Monstera', 'Chamaedorea_elegans', 'Bengal_Fig', 'Stuckyi', 'Pachira', 'Ardisia_crenata', 'Zamia', 'Staghorn', 'Birkin',
+        'Wilma']  # class names
+
+
