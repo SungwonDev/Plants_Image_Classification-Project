@@ -33,39 +33,61 @@ Yolov5를 기반으로 제작한 식물 분류 인공지능<br>
 
 # 사용기술 & 개발환경
 ### 
-<img src="https://img.shields.io/badge/Yolov5-black?style=for-the-badge&logo=Yolov5#&logoColor=white">&nbsp;<br>
-<img src="https://img.shields.io/badge/colab-black?style=for-the-badge&logo=&logoColor=white">&nbsp;
-<img src="https://img.shields.io/badge/make sense-black?style=for-the-badge&logo=make sense&logoColor=white">&nbsp;
+- Google colaboratory
+- Yolov5
+- Tesnsorflow
 <br>
 
 [목차🔺](#목차)
 
 <br>
 
-# 제작과정 및 기능
+# 식물 데이터셋
+### 1. Class : 17
+  - Golden_pothos, Muehlenbeckia_complexa, Happy_plant, Bunnyearscactus, Rosmarinus, Dracaena, Chlorophytum
+  - Monstera, Chamaedorea_elegans, Bengal_Fig, Stuckyi, Pachira, Ardisia_crenata, Zamia, Staghorn
+  - Birkin, Wilma
 
-### 1. 데이터 수집, 가공
-Yolov5 모델에 학습시킬 이미지를 크롤링하여 각각 400장씩 수집합니다. <br>
-수집한 이미지를 416 * 416 리사이즈한 뒤 ardisia_crenata_001부터 시작하여 400 순으로 이름을 정렬시킵니다.
+2. Images : 6800
+3. Train/Vaild (100%)
+  - Train : 5440(80%)
+  - Valid : 1360(20%)
+
+
+# 모델 트레이닝
+
+1. yolov5 설치
+```bash
+!git clone https://github.com/ultralytics/yolov5.git
+```
 
 <br>
 
-### 2. 라벨링
-
-Make Sense 사이트에서 400장씩 17종 총 6800장의 이미지를 라벨링 해줍니다.
-라벨링이 끝나면 이미지와 바운딩박스의 정보가 담긴 txt파일을 받을 수 있습니다.
+2. requirements.txt 설치
+```bash
+%cd /content/yolov5/
+pip install -r requirements.txt
+```
 
 <br>
 
-### 3. 데이터 학습
+3. Model 학습
+```bash
+!python train.py --img 416 --batch 16 --epochs 20 --data /content/dataset/data.yaml --cfg ./models/yolov5s.yaml --weights yolov5s.pt --name yolov5s_result
+```
 
+<br>
 
+4. Model 테스트
+``` bash
+!python detect.py --weights /content/yolov5/runs/train/yolov5s_result/weights/best.pt --img 416 --conf 0.5 --source /content/dataset/export/testimg/테스트할 이미지.jpg
+```
 
 <br>
 
 ### 4. 학습 결과
 
-이러한 결과를 확인할 수 있었으며 best. 를 받았습니다.
+학습된 가중치 파일(best.pt) 
 
 <br>
 
